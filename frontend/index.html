@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack - Casino</title>
+    <meta name="description" content="Juega al clásico Blackjack en nuestro elegante casino en línea.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="casino-container">
+        <!-- Message popup centered within the casino table -->
+        <div id="game-message" class="message"></div>
+
+        <header class="glass-header">
+            <h1>BLACKJACK</h1>
+            <div class="scoreboard">
+                <div class="score-badge win">Victorias: <span id="win-count">0</span></div>
+                <div class="score-badge loss">Derrotas: <span id="loss-count">0</span></div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <!-- Dealer section -->
+            <section class="player-area dealer-area hidden" id="dealer-section">
+                <div class="header-area">
+                    <h2>CARTAS DEL DEALER</h2>
+                    <span class="score badge" id="dealer-score">?</span>
+                </div>
+                <div class="cards-container" id="dealer-cards">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+
+            <!-- User player section -->
+            <section class="player-area user-area hidden" id="player-section">
+                <div class="header-area">
+                    <h2>TUS CARTAS</h2>
+                    <span class="score badge" id="player-score">0</span>
+                </div>
+                <div class="cards-container" id="player-cards">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="controls-area">
+            <button id="btn-start" class="btn primary-btn">NUEVO JUEGO</button>
+            <div id="game-controls" class="hidden">
+                <button id="btn-hit" class="btn action-btn">PEDIR CARTA</button>
+                <button id="btn-stand" class="btn action-btn red">PLANTARSE</button>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
