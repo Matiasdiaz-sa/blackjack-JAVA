@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack - Casino</title>
+    <meta name="description" content="Juega al clásico Blackjack en nuestro elegante casino en línea.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="casino-container">
+        <!-- Message popup centered within the casino table -->
+        <div id="game-message" class="message"></div>
+
+        <header class="glass-header">
+            <h1>BLACKJACK</h1>
+            <div class="scoreboard top-stats">
+                <div class="score-badge neutral">Saldo: $<span id="balance-display">100,000</span></div>
+                <div class="score-badge win" id="streak-badge">Racha: <span id="streak-count">0</span> <span class="streak-fire hidden" id="streak-fire">👑</span></div>
+            </div>
+            <div class="scoreboard bottom-stats">
+                <div class="score-badge win">Victorias: <span id="win-count">0</span></div>
+                <div class="score-badge loss">Derrotas: <span id="loss-count">0</span></div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <!-- Dealer section -->
+            <section class="player-area dealer-area hidden" id="dealer-section">
+                <div class="header-area">
+                    <h2>CARTAS DEL DEALER</h2>
+                    <span class="score badge" id="dealer-score">?</span>
+                </div>
+                <div class="cards-container" id="dealer-cards">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+
+            <!-- User player section -->
+            <section class="player-area user-area hidden" id="player-section">
+                <div class="header-area">
+                    <h2>TUS CARTAS</h2>
+                    <span class="score badge" id="player-score">0</span>
+                </div>
+                <div class="cards-container" id="player-cards">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="controls-area">
+            <!-- Betting Controls (Visible before dealing) -->
+            <div id="betting-controls" class="betting-area">
+                <div class="bet-info">
+                    <h3>Apuesta actual: $<span id="current-bet-display">0</span></h3>
+                </div>
+                <div class="chips-container">
+                    <button class="chip chip-1k" data-bet="1000">1K</button>
+                    <button class="chip chip-10k" data-bet="10000">10K</button>
+                    <button class="chip chip-50k" data-bet="50000">50K</button>
+                    <button class="chip chip-allin" data-bet="all">ALL-IN</button>
+                </div>
+                <div class="main-actions">
+                    <button id="btn-clear-bet" class="btn action-btn">BORRAR</button>
+                    <button id="btn-start" class="btn primary-btn" disabled>REPARTIR</button>
+                </div>
+            </div>
+
+            <!-- Game Controls (Visible during gameplay) -->
+            <div id="game-controls" class="hidden game-actions">
+                <button id="btn-hit" class="btn action-btn">PEDIR CARTA</button>
+                <button id="btn-stand" class="btn action-btn red">PLANTARSE</button>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

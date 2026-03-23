@@ -1,0 +1,487 @@
+:root {
+    --primary-color: #0d832d;
+    --dark-bg: #0b2210;
+    --table-bg: radial-gradient(circle at center, #1b8a3e 0%, #063d14 100%);
+    --body-bg: #050505;
+    --glass-bg: rgba(0, 0, 0, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-light: #f5f5f5;
+    --gold: #d4af37;
+    --btn-hover: #15b740;
+    --btn-red: #c92a2a;
+    --btn-red-hover: #f03e3e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--body-bg);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background 1s ease;
+}
+
+/* VIP High Roller Streak Theme */
+body.streak-theme {
+    background: radial-gradient(circle at top, #2b1100 0%, #000000 100%);
+}
+
+/* Green Casino Table Container */
+.casino-container {
+    width: 95%;
+    max-width: 1100px;
+    height: 95vh;
+    background: var(--table-bg);
+    border: 15px solid #1a1a1a;
+    border-radius: 60px;
+    box-shadow: 0 35px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.glass-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.glass-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    margin-bottom: 0.5rem;
+}
+
+/* Scoreboard Stats */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.score-badge {
+    background: rgba(0,0,0,0.6);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.score-badge.win { color: #51cf66; border-color: rgba(81, 207, 102, 0.3); }
+.score-badge.loss { color: #ff6b6b; border-color: rgba(255, 107, 107, 0.3); }
+.score-badge.neutral { color: #fff; border-color: var(--gold); }
+
+.score-badge span {
+    font-weight: 800;
+    margin-left: 0.5rem;
+}
+
+/* Streak specific formatting */
+.racha-active {
+    color: #ffd700 !important;
+    text-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+    border-color: #ff8c00 !important;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6) !important;
+}
+
+@keyframes fireBurn {
+    0% { transform: scale(1) translateY(0); opacity: 0.8; filter: hue-rotate(0deg); }
+    50% { transform: scale(1.3) translateY(-3px); opacity: 1; filter: hue-rotate(-15deg); }
+    100% { transform: scale(1) translateY(0); opacity: 0.8; filter: hue-rotate(5deg); }
+}
+
+.streak-fire {
+    display: inline-block;
+    animation: fireBurn 0.8s infinite alternate ease-in-out;
+    margin-left: 0.5rem;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    border: 2px solid var(--gold);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.message.show {
+    opacity: 1;
+}
+
+.game-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.player-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.header-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.player-area h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.badge {
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--gold);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    min-height: 160px;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Card Styling */
+.card-wrapper {
+    position: relative;
+    width: 100px;
+    height: 145px;
+    margin-left: -40px;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: dealCard 0.4s ease-out forwards;
+}
+
+.card-wrapper:first-child {
+    margin-left: 0;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    cursor: default;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateY(0deg) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.flipped:hover {
+    transform: translateY(-10px) rotateY(180deg) !important;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.card-front {
+    background: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    background: linear-gradient(135deg, #1f2235 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, #1f2235 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, #1f2235 25%, transparent 25%),
+                linear-gradient(45deg, #1f2235 25%, transparent 25%);
+    background-size: 20px 20px;
+    background-color: #3f456c;
+    border: 3px solid #f5f5f5;
+}
+
+.red-suit { color: #d12d36; }
+.black-suit { color: #1a1a1a; }
+
+.card-top, .card-bottom {
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.card-bottom {
+    transform: rotate(180deg);
+}
+
+.card-center {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes dealCard {
+    from {
+        transform: translateY(-80px) rotate(-10deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Controls */
+.controls-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    min-height: 120px;
+}
+
+.game-actions, .main-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Betting System */
+.betting-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.bet-info h3 {
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    background: rgba(0,0,0,0.5);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.chips-container {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+}
+
+.chip {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px dashed rgba(255,255,255,0.7);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4), inset 0 0 15px rgba(0,0,0,0.5);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.chip:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.chip:active {
+    transform: scale(0.95);
+}
+
+.chip-1k { background: radial-gradient(circle, #3b82f6, #1d4ed8); }
+.chip-10k { background: radial-gradient(circle, #ef4444, #b91c1c); }
+.chip-50k { background: radial-gradient(circle, #f59e0b, #b45309); }
+.chip-allin { 
+    background: radial-gradient(circle, #1a1a1a, #000); 
+    border-color: #d4af37; 
+    color: #d4af37; 
+    font-size: 0.9rem;
+}
+
+.btn {
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    outline: none;
+    text-transform: uppercase;
+}
+
+.primary-btn {
+    background: var(--gold);
+    color: #000;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: #f5cf4d;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+}
+
+.action-btn {
+    background: var(--text-light);
+    color: var(--dark-bg);
+}
+
+.action-btn:hover:not(:disabled) {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+}
+
+.action-btn.red {
+    background: var(--btn-red);
+    color: white;
+}
+
+.action-btn.red:hover:not(:disabled) {
+    background: var(--btn-red-hover);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #666 !important;
+    color: #aaa !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- VIP Golden Streak Theme --- */
+.streak-table {
+    border-color: #d4af37 !important;
+    animation: goldPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes goldPulse {
+    0% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2); }
+    100% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.7), inset 0 0 50px rgba(212, 175, 55, 0.4); border-color: #ffd700 !important; }
+}
+
+.streak-table .card {
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5) !important;
+}
+
+.streak-table .card-front {
+    background: linear-gradient(135deg, #ffffff 0%, #fff9e6 100%);
+}
+
+.streak-table .card-back {
+    border-color: #d4af37;
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .casino-container {
+        border-width: 10px;
+        border-radius: 30px;
+        height: 98vh;
+        padding: 1rem;
+    }
+    .glass-header h1 {
+        font-size: 2.2rem;
+    }
+    .card-wrapper {
+        width: 75px;
+        height: 110px;
+        margin-left: -30px;
+    }
+    .card-center {
+        font-size: 1.8rem;
+    }
+    .controls-area {
+        margin-top: 0.5rem;
+    }
+    .chips-container {
+        gap: 0.5rem;
+    }
+    .chip {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9rem;
+    }
+    .score-badge {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    .scoreboard.bottom-stats {
+        margin-top: 0.5rem;
+    }
+}
