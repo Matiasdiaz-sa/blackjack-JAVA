@@ -453,10 +453,18 @@ body.streak-theme {
         border-width: 10px;
         border-radius: 30px;
         height: 98vh;
+        height: 98dvh;
         padding: 1rem;
+        justify-content: space-between;
+        overflow-y: auto;
     }
     .glass-header h1 {
         font-size: 2.2rem;
+        margin-bottom: 0.2rem;
+    }
+    .scoreboard {
+        gap: 0.8rem;
+        flex-wrap: wrap;
     }
     .card-wrapper {
         width: 75px;
@@ -471,6 +479,7 @@ body.streak-theme {
     }
     .chips-container {
         gap: 0.5rem;
+        flex-wrap: wrap;
     }
     .chip {
         width: 50px;
@@ -483,5 +492,64 @@ body.streak-theme {
     }
     .scoreboard.bottom-stats {
         margin-top: 0.5rem;
+    }
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    .game-actions, .main-actions {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+    .message {
+        width: 90%;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .casino-container {
+        padding: 0.8rem;
+        border-width: 5px;
+        border-radius: 20px;
+    }
+    .glass-header h1 {
+        font-size: 1.8rem;
+    }
+    .scoreboard {
+        gap: 0.5rem;
+    }
+    .score-badge {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .card-wrapper {
+        width: 60px;
+        height: 88px;
+        margin-left: -25px;
+    }
+    .card-center {
+        font-size: 1.5rem;
+    }
+    .card-top, .card-bottom {
+        font-size: 1rem;
+    }
+    .chip {
+        width: 45px;
+        height: 45px;
+        font-size: 0.8rem;
+        border-width: 3px;
+    }
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    .chips-container {
+        gap: 0.4rem;
+    }
+    .badge {
+        font-size: 1rem;
+        padding: 0.2rem 0.8rem;
     }
 }
