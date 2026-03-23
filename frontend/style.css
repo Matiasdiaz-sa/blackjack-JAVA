@@ -357,6 +357,8 @@ body.streak-theme {
 .chip-1k { background: radial-gradient(circle, #3b82f6, #1d4ed8); }
 .chip-10k { background: radial-gradient(circle, #ef4444, #b91c1c); }
 .chip-50k { background: radial-gradient(circle, #f59e0b, #b45309); }
+.chip-500k { background: radial-gradient(circle, #8b5cf6, #5b21b6); }
+.chip-1m { background: radial-gradient(circle, #e2e8f0, #475569); color: #fff; border-color: #fff; }
 .chip-allin { 
     background: radial-gradient(circle, #1a1a1a, #000); 
     border-color: #d4af37; 
